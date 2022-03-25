@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryStoreRequest;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -23,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('product.create', compact('categories'));
     }
 
     /**
@@ -32,9 +37,27 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        $imagePath = 'storage/' .  $request->file('image')->store('productImages' ,'public');
+        $name = $request->input('name');
+        $price = $request->input('price');
+        $description = $request->input('description');
+        $category_id = $request->input('category_id');
+
+        $product = new Product();
+        $product->name = $name;
+        $product->price = $price;
+        $product->description = $description;
+        $product->image = $imagePath;
+        $product->category_id = $category_id;
+        $product->save();
+
+
+        return redirect()->route('products.index')->with('success', 'Product has been created');
+
+
+
     }
 
     /**
@@ -54,9 +77,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -66,9 +90,23 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryStoreRequest $request, Product $product)
     {
-        //
+        $imagePath = 'storage/' .  $request->file('image')->store('productImages' ,'public');
+        $name = $request->input('name');
+        $price = $request->input('price');
+        $description = $request->input('description');
+        $category_id = $request->input('category_id');
+
+        $product->name = $name;
+        $product->price = $price;
+        $product->description = $description;
+        $product->image = $imagePath;
+        $product->category_id = $category_id;
+        $product->save();
+        
+        return redirect()->route('products.index')->with('success', 'Product has been updated');
+
     }
 
     /**
@@ -77,8 +115,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index')->with('success', 'Product has been deleted');
+
+    
     }
 }

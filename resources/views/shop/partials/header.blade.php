@@ -38,7 +38,10 @@
                             </li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><a href="{{ route('categories.index') }}">Dashboard</a></li>
+                        @if (Auth::user()->usertype == 'admin')
+                        <li class="scroll-to-section"><a href="{{ route('dash') }}">Dashboard</a></li>
+
+                        @endif
                     </ul>        
                     <a class='menu-trigger'>
                         <span>Menu</span>
