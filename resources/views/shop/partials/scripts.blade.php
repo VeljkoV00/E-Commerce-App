@@ -15,6 +15,7 @@
     <script src="{{ asset('assets/js/slick.js') }}"></script>
     <script src="{{ asset('assets/js/lightbox.js') }}"></script>
     <script src="{{ asset('assets/js/isotope.js') }}"></script>
+    <script src="{{ asset('assets/js/quantity.js') }}"></script>
 
     <!-- Global Init -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
@@ -34,3 +35,4 @@
             });
         });
     </script>
+    

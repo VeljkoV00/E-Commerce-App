@@ -4,8 +4,8 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png">
+                    <a href="{{ route('home') }}" class="logo">
+                        <img src="{{ asset('assets/images/logo.png') }}">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
@@ -19,7 +19,7 @@
                             <ul>
                                 <li><a href="">Logout</a></li>
                                 <li><a href="products.html">Products</a></li>
-                                <li><a href="single-product.html">Single Product</a></li>
+                                <li><a href="">Single Product</a></li>
                                 <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </li>

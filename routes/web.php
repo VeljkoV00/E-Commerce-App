@@ -19,9 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Main Shop Routes
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/home/{product}', [HomeController::class, 'show'])->name('show');
 
+
+//Admin Routes
 Route::prefix('admin')->middleware('auth', 'admin')->group(function(){
 
     Route::get('/dashboard', function(){
