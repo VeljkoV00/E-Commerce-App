@@ -6,7 +6,15 @@
                     <h2>By Subscribing To Our Newsletter You Can Get 30% Off</h2>
                     <span>Details to details is what makes Hexashop different from the other themes.</span>
                 </div>
-                <form id="subscribe" action="" method="get">
+                <div>
+                  @if (session()->has('message'))
+                      <div class="alert alert-success">
+                          {{ session('message') }}
+                      </div>
+                  @endif
+              </div>
+                <form id="subscribe" name="subscribe" action="{{ route('mail') }}" method="GET">
+                  @csrf
                     <div class="row">
                       <div class="col-lg-5">
                         <fieldset>

@@ -34,7 +34,13 @@
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
-
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
 
     <!-- ***** Product Area Starts ***** -->
     <section class="section" id="product">
@@ -71,7 +77,7 @@
                     </div>
                     <div class="total">
                         <h4>Total: $210.00</h4>
-                        <div class="main-border-button"><a href="#">Add To Cart</a></div>
+                        <div class="main-border-button"><a href="{{ route('cart', $product) }}">Add To Cart</a></div>
                     </div>
                 </div>
             </div>

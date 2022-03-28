@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Subscribe;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -21,6 +23,26 @@ class HomeController extends Controller
 
         $product = Product::find($id);
         return view('single-product', compact('product'));
+    }
+
+    public function sendEmail(){
+
+        $details = [
+            'title' => 'Mail form veljkovelimirovic7@gmail.com',
+            'body' => 'You have succesfully subscribed'
+        ];
+        Mail::to('borisveljko@gmail.com')->send(new Subscribe($details));
+    
+        return redirect()->route('home')->with('message', 'You have subscribed succesfully');
+    }
+
+
+    public function cart(Product $product){
+
+        
+
+        return redirect()->route('show')->with('message', 'Cart has been added to cart');
+
     }
 
 
