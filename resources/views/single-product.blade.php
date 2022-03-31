@@ -76,8 +76,17 @@
                         </div>
                     </div>
                     <div class="total">
-                        <h4>Total: $210.00</h4>
-                        <div class="main-border-button"><a href="{{ route('cart', $product) }}">Add To Cart</a></div>
+                        <h4>{{ $product->price }}</h4>
+                        <div class="main-border-button">
+                            <form action="{{ route('cart.store', $product->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="number" value="1" name="quantity" class="text-sm">
+                                <button type="submit"  href="" class=" bg-slate-400 ">Add To Cart</button>
+                            </form>
+                        </div>
+                            
+                            
                     </div>
                 </div>
             </div>

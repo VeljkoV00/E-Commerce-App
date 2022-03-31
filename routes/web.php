@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -43,12 +44,11 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function(){
 Route::get('/send-email', [HomeController::class, 'sendEmail'])->name('mail');
 
 //Cart route
-Route::get('/add-to-cart/{product}', [HomeController::class, 'cart'])->name('cart');
+//Route::get('/add-to-cart/{product}', [HomeController::class, 'cart'])->name('cart');
+Route::post('/add-to-cart/{id}', [CartController::class, 'store'])->name('cart.store');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart.get');
 
 
 
-/* Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
- */
+
 require __DIR__.'/auth.php';

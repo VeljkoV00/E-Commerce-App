@@ -37,13 +37,7 @@ class HomeController extends Controller
     }
 
 
-    public function cart(Product $product){
-
-        
-
-        return redirect()->route('show')->with('message', 'Cart has been added to cart');
-
-    }
+    
 
 
 }

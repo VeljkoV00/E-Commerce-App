@@ -42,6 +42,7 @@
                         <li class="scroll-to-section"><a href="{{ route('dash') }}">Dashboard</a></li>
 
                         @endif
+                        <li class="scroll-to-section"><a href="{{ route('cart.get') }}">Cart({{ Cart::total() }})</a></li>
                     </ul>        
                     <a class='menu-trigger'>
                         <span>Menu</span>
