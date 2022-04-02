@@ -55,7 +55,6 @@
             <div class="col-lg-4">
                 <div class="right-content">
                     <h4>{{ $product->name }}</h4>
-                    <span class="price">{{ $product->price }}</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>
@@ -65,24 +64,13 @@
                     </ul>
                     <span>{{ $product->description }}</span>
                     
-                    <div class="quantity-content">
-                        <div class="left-content">
-                            <h6>No. of Orders</h6>
-                        </div>
-                        <div class="right-content">
-                            <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-                            </div>
-                        </div>
-                    </div>
                     <div class="total">
-                        <h4>{{ $product->price }}</h4>
+                        <h2>{{ $product->price }}$</h2>
                         <div class="main-border-button">
                             <form action="{{ route('cart.store', $product->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="number" value="1" name="quantity" class="text-sm">
-                                <button type="submit"  href="" class=" bg-slate-400 ">Add To Cart</button>
+                                <button type="submit"  href="" class=" bg-slate-400 btn btn-dark ">Add To Cart</button>
                             </form>
                         </div>
                             

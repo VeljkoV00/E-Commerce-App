@@ -23,13 +23,16 @@
     </div>
   </nav>
 
+
   <div class=" container">
 
     <div class="card">
         <div class="card-body">
           @yield('content')
-          <img src="{{ asset('assets/images/1284287.webp') }}" alt="">
         </div>
+
        
   </div>
+
+ 
 @include('shop.partials.scripts')

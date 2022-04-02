@@ -17,10 +17,7 @@
                         <li class="submenu">
                             <a href="javascript:;">Pages</a>
                             <ul>
-                                <li><a href="">Logout</a></li>
-                                <li><a href="products.html">Products</a></li>
-                                <li><a href="">Single Product</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="{{ route('allProducts') }}">Products</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
@@ -42,7 +39,7 @@
                         <li class="scroll-to-section"><a href="{{ route('dash') }}">Dashboard</a></li>
 
                         @endif
-                        <li class="scroll-to-section"><a href="{{ route('cart.get') }}">Cart({{ Cart::total() }})</a></li>
+                        <li class="scroll-to-section"><a href="">Cart({{ Cart::total() }}$)</a></li>
                     </ul>        
                     <a class='menu-trigger'>
                         <span>Menu</span>

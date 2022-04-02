@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $man = Product::where('category_id', '1')->get();
         $women = Product::where('category_id', '3')->get();
@@ -34,6 +38,12 @@ class HomeController extends Controller
         Mail::to('borisveljko@gmail.com')->send(new Subscribe($details));
     
         return redirect()->route('home')->with('message', 'You have subscribed succesfully');
+    }
+
+    public function allProducts (){
+
+        $products = Product::paginate(6);
+        return view('shop.all-products', compact('products'));
     }
 
 

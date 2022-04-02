@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="down-content">
                                     <h4>{{ $item->name }}</h4>
-                                    <span>{{ $item->price }}</span>
+                                    <span>{{ $item->price }}$</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>

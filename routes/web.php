@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
@@ -8,23 +9,12 @@ use App\Mail\Subscribe;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+//Login Route
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 //Main Shop Routes
-Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{product}', [HomeController::class, 'show'])->name('show');
+Route::get('/all-produtcs', [HomeController::class, 'allProducts'])->name('allProducts');
 
 
 //Admin Routes
@@ -44,7 +34,6 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function(){
 Route::get('/send-email', [HomeController::class, 'sendEmail'])->name('mail');
 
 //Cart route
-//Route::get('/add-to-cart/{product}', [HomeController::class, 'cart'])->name('cart');
 Route::post('/add-to-cart/{id}', [CartController::class, 'store'])->name('cart.store');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.get');
 
